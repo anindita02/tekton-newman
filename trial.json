@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "74a3ade7-9cf2-4384-be37-27f131491343",
+		"name": "newtestcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20809910"
+	},
+	"item": [
+		{
+			"name": "http://172.20.11.212:32566/api/admin/rules//v2/getchannels?channelName=In-App",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							"",
+							"pm.sendRequest(\"http://172.20.11.212:32566/api/admin/resources\", ",
+							"{",
+							"    \"authorization\": pm.environment.get(\"authorizationToken\")",
+							"},",
+							"function (err, response) {",
+							"    console.log(response.json(),err);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "8c36f241115a43483d02e153d0de6b41186c15f19edab886b81b045c436665d9",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-workspace-id",
+						"value": "627cebe8d4dccab71fb1d3eb",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://172.20.11.212:32566/api/admin/rules//v2/getchannels?channelName=In-App",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"11",
+						"212"
+					],
+					"port": "32566",
+					"path": [
+						"api",
+						"admin",
+						"rules",
+						"",
+						"v2",
+						"getchannels"
+					],
+					"query": [
+						{
+							"key": "channelName",
+							"value": "In-App"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://172.20.11.212:32566/api/admin/resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "8c36f241115a43483d02e153d0de6b41186c15f19edab886b81b045c436665d9",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-workspace-id",
+						"value": "627cebe8d4dccab71fb1d3eb",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://172.20.11.212:32566/api/admin/resources",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"11",
+						"212"
+					],
+					"port": "32566",
+					"path": [
+						"api",
+						"admin",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://172.20.11.212:32566/api/admin/cluster?type=1&_end=200&_order=ASC&_sort=id&_start=0&name=ozvault",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "8c36f241115a43483d02e153d0de6b41186c15f19edab886b81b045c436665d9",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-workspace-id",
+						"value": "627cebe8d4dccab71fb1d3eb",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://172.20.11.212:32566/api/admin/cluster?type=1&_end=200&_order=ASC&_sort=id&_start=0&name=ozvault",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"11",
+						"212"
+					],
+					"port": "32566",
+					"path": [
+						"api",
+						"admin",
+						"cluster"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "_end",
+							"value": "200"
+						},
+						{
+							"key": "_order",
+							"value": "ASC"
+						},
+						{
+							"key": "_sort",
+							"value": "id"
+						},
+						{
+							"key": "_start",
+							"value": "0"
+						},
+						{
+							"key": "name",
+							"value": "ozvault"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "8c36f241115a43483d02e153d0de6b41186c15f19edab886b81b045c436665d9",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
