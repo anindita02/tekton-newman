@@ -1,0 +1,62 @@
+id: 65c4a606961ce2f9c5b9a963
+name: Delete Kubernetes Deployment
+kind: TektonPipelineType
+description: "Delete a Kubernetes Deployment"
+tags:
+  - id: "65b116caa51535baae1b277e"
+    name: rollback
+visibility:
+  showToUser: true
+params:
+  - default: ""
+    description: The name of the Kubernetes Deployment to be deleted
+    name: DEPLOYMENT_NAME
+    required: true
+    type: 1
+    value: ""
+  - default: ""
+    description: The namespace of the Kubernetes Deployment to be deleted
+    name: DEPLOYMENT_NAMESPACE
+    required: true
+    type: 1
+    value: ""
+tektonPipeline:
+  apiVersion: tekton.dev/v1beta1
+  kind: Pipeline
+  metadata:
+    name: ozone-delete-kubernetes-deployment
+    namespace: ozone
+  spec:
+    params:
+      - description: The name of the Kubernetes Deployment to be deleted
+        name: DEPLOYMENT_NAME
+        type: string
+      - description: The namespace of the Kubernetes Deployment to be deleted
+        name: DEPLOYMENT_NAMESPACE
+        type: string
+    tasks:
+      - name: ozone-delete-kubernetes-deployment-1
+        params:
+          - name: DEPLOYMENT_NAME
+            value: $(params.DEPLOYMENT_NAME)
+          - name: DEPLOYMENT_NAMESPACE
+            value: $(params.DEPLOYMENT_NAMESPACE)
+        taskSpec:
+          metadata: {}
+          params:
+            - description: The name of the Kubernetes Deployment to be deleted
+              name: DEPLOYMENT_NAME
+              type: string
+            - description: The namespace of the Kubernetes Deployment to be deleted
+              name: DEPLOYMENT_NAMESPACE
+              type: string
+          steps:
+            - computeResources: {}
+              env:
+                - name: DEPLOYMENT_NAME
+                - name: DEPLOYMENT_NAMESPACE
+              image: "{{TEKTON_PUBLIC_REGISTRY_PREFIX}}/docker.io/bitnami/kubectl:latest"
+              name: delete-kubernetes-deployment
+              script: |
+                set +x
+                kubectl delete deployment $(params.DEPLOYMENT_NAME) -n $(params.DEPLOYMENT_NAMESPACE)
